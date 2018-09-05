@@ -9,6 +9,9 @@ namespace TwoPlugin
     {
         public string GetMessage()
         {
+            var message = new Message();
+            message.SayWhat();
+
             var obj = new JObject
             {
                 { "message", "This is a message defined in TwoPlugin" }
