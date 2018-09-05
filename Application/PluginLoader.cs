@@ -15,8 +15,10 @@ namespace Application
 
             paths.ToList().ForEach(path =>
             {
+                var lc = new LoadContext(path);
+
                 var assemblies = Directory.GetFiles(path, "*.dll")
-                            .Select(AssemblyLoadContext.Default.LoadFromAssemblyPath).ToList();
+                            .Select(lc.Load).ToList();
 
                 var configuration = new ContainerConfiguration().WithAssemblies(assemblies);
                 var container = configuration.CreateContainer();
