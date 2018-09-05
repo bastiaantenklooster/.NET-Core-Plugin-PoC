@@ -21,17 +21,17 @@ namespace Application
                     "plugins" , new JObject {
                         {
                             "one_plugin", new JObject {
-                                { "directory" , @"C:\Users\Bastiaan\source\repos\Application\OnePlugin\bin\Debug\netcoreapp2.1\" }
+                                { "directory" , Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..\..\OnePlugin\bin\Debug\netcoreapp2.1\") }
                             }
                         },
                         {
                             "two_plugin", new JObject {
-                                { "directory" , @"C:\Users\Bastiaan\source\repos\Application\TwoPlugin\bin\Debug\netcoreapp2.1\" }
+                                { "directory" , Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..\..\TwoPlugin\bin\Debug\netcoreapp2.1\") }
                             }
                         },
                         {
                             "three_plugin", new JObject {
-                                { "directory" , @"C:\Users\Bastiaan\source\repos\Application\GoogleRetrieverPlugin\bin\Debug\netcoreapp2.1\" }
+                                { "directory" , Path.Combine(Directory.GetCurrentDirectory(), @"..\..\..\..\GoogleRetrieverPlugin\bin\Debug\netcoreapp2.1\") }
                             }
                         }
                     }
