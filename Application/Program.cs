@@ -15,6 +15,7 @@ namespace Application
         {
             Console.WriteLine("Loading plugins");
 
+            #region Config
             var config = new JObject
             {
                 {
@@ -39,24 +40,16 @@ namespace Application
             };
 
             var plugins = new string[] { "one_plugin", "two_plugin", "three_plugin" };
+            #endregion;
 
-            var exports = new List<IPlugin>();
+            var paths = new string[plugins.Length];
 
+            var i = 0;
             plugins.ToList().ForEach(plugin =>
-            {
-                var assemblies = Directory.GetFiles(config.SelectToken($"plugins.{plugin}.directory").ToString(), "*.dll")
-                            .Select(AssemblyLoadContext.Default.LoadFromAssemblyPath).ToList();
+                paths[i++] = config.SelectToken($"plugins.{plugin}.directory").ToString()
+            );
 
-                var configuration = new ContainerConfiguration().WithAssemblies(assemblies);
-                var container = configuration.CreateContainer();
-
-                exports.AddRange(container.GetExports<IPlugin>());
-            });
-
-            foreach (IPlugin export in exports)
-            {
-                Console.WriteLine(export.GetType().ToString() + " says: " + export.GetMessage());
-            }
+            PluginLoader<IPlugin>.Load(paths).ForEach(export => Console.WriteLine(export.GetType().ToString() + " says: " + export.GetMessage()));
 
             Console.Read();
         }
