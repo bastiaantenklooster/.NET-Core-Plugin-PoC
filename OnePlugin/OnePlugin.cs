@@ -1,7 +1,5 @@
 ﻿using System.Composition;
 using Application.Plugins;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace OnePlugin
 {
@@ -10,12 +8,7 @@ namespace OnePlugin
     {
         public string GetMessage()
         {
-            var obj = new JObject
-            {
-                { "message", "This message comes from OnePlugin" }
-            };
-
-            return obj.SelectToken("message").ToObject<string>();
+            return new Message("Hello this is OnePlugin speaking!!!").GetBody();
         }
     }
 }
