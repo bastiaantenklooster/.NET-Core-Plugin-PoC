@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="System.ComponentModel.Composition" Version="4.5.0" />
     <PackageReference Include="System.Composition" Version="1.2.0" />
     <PackageReference Include="System.Composition.Hosting" Version="1.2.0" />
   </ItemGroup>
